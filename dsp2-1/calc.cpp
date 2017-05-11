@@ -36,6 +36,7 @@ vector<complex<double>> calc::fft(vector<double> data, const int N, int mode, bo
 
     vector<complex<double>> result;
     for (complex<double> tmp: x) {
+        if(mode == -1) tmp /= SIZE;
         result.emplace_back(tmp);
     }
 
@@ -91,8 +92,6 @@ vector<double> calc::power_spectrum(vector<complex<double>> x1, vector<complex<d
 
     for (int i = 0; i < x1.size(); ++i) {
         result.emplace_back((conj(x1.at(i)) * x2.at(i)).real());
-
-        cout << i << " : " << result.at(i) << endl;
     }
 
     return result;
